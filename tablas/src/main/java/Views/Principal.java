@@ -301,16 +301,19 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExportMouseClicked
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
-    
+   
         File archivo = new File("C:\\Users\\thecr\\Documents\\TEST\\Amibas.txt");
         PrintWriter escribir;
         try {
             escribir = new PrintWriter(archivo);
-            escribir.print("HOLA");
+
+            for (General municipio : TablaDatos) {
+                escribir.print(municipio.toString() + "\n");
+            }
             escribir.close();
         } catch (FileNotFoundException ex) {
-// Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnExportActionPerformed
 
