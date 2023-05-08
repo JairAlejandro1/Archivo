@@ -7,6 +7,7 @@ package Views;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import static java.lang.Math.E;
 import javax.swing.table.DefaultTableModel;
 import models.General;
 import static models.General.llenarDatosTabla;
@@ -144,6 +145,11 @@ public class Principal extends javax.swing.JFrame {
         btnExport.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnExportMouseClicked(evt);
+            }
+        });
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
             }
         });
 
@@ -290,21 +296,23 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreMunicipioActionPerformed
 
     private void btnExportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExportMouseClicked
-                                            
-   System.out.println("Inico guardar archivo");
-   File archivo = new File("f:\\tblmunicipio.txt");
-   PrintWriter escribir;
-   try {
-      escribir = new PrintWriter(archivo);
-      for(General municipio : TablaDatos ){
-         escribir.print(municipio.toString()+"\n");
-      }
-      escribir.close();
-   } catch (FileNotFoundException ex) {
-      java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-   }
+
 
     }//GEN-LAST:event_btnExportMouseClicked
+
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+    
+        File archivo = new File("C:\\Users\\thecr\\Documents\\TEST\\Amibas.txt");
+        PrintWriter escribir;
+        try {
+            escribir = new PrintWriter(archivo);
+            escribir.print("HOLA");
+            escribir.close();
+        } catch (FileNotFoundException ex) {
+// Logger.getLogger(FrmPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+             java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnExportActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
