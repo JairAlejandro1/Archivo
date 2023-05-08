@@ -74,4 +74,10 @@ public class General {
         return "Tabla{" + "id: " + getId() + ", Estado: " + getNomEstado() + ", Municipio: " + getNomMunicipio() + '}';
 
     }
+    public static void listaForI(){
+        System.out.println("FOR-I");
+        for(int i = 0; i < TablaDatos.size();i++){
+            System.out.println(TablaDatos.get(i).toString());
+        }
+    }
 }
