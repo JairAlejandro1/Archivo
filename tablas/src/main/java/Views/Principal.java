@@ -4,6 +4,9 @@
  */
 package Views;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import javax.swing.table.DefaultTableModel;
 import models.General;
 import static models.General.llenarDatosTabla;
@@ -78,6 +81,7 @@ public class Principal extends javax.swing.JFrame {
         lblRecNo = new javax.swing.JLabel();
         txtNombreMunicipio = new javax.swing.JTextField();
         lblMunicipio = new javax.swing.JLabel();
+        btnExport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,6 +140,13 @@ public class Principal extends javax.swing.JFrame {
 
         lblMunicipio.setText("Municipio:");
 
+        btnExport.setText("Exportar");
+        btnExport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExportMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -146,7 +157,8 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnExport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
@@ -200,7 +212,9 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(btnActualizar)
                         .addGap(69, 69, 69)
                         .addComponent(btnEliminar)
-                        .addGap(125, 125, 125))))
+                        .addGap(48, 48, 48)
+                        .addComponent(btnExport)
+                        .addGap(54, 54, 54))))
         );
 
         pack();
@@ -275,12 +289,30 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreMunicipioActionPerformed
 
+    private void btnExportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExportMouseClicked
+                                            
+   System.out.println("Inico guardar archivo");
+   File archivo = new File("f:\\tblmunicipio.txt");
+   PrintWriter escribir;
+   try {
+      escribir = new PrintWriter(archivo);
+      for(General municipio : TablaDatos ){
+         escribir.print(municipio.toString()+"\n");
+      }
+      escribir.close();
+   } catch (FileNotFoundException ex) {
+      java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+   }
+
+    }//GEN-LAST:event_btnExportMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
     private javax.swing.JToggleButton btnActualizar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnExport;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblMunicipio;

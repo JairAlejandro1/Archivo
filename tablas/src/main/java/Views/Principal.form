@@ -30,6 +30,7 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="btnActualizar" max="32767" attributes="0"/>
                   <Component id="btnEliminar" max="32767" attributes="0"/>
+                  <Component id="btnExport" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -96,7 +97,9 @@
                       <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                       <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="btnExport" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -209,6 +212,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Municipio:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnExport">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Exportar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnExportMouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
