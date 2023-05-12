@@ -302,7 +302,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
    
-        File archivo = new File("C:\\Users\\thecr\\Documents\\TEST\\Amibas.txt");
+        File archivo = new File("C:\\Users\\thecr\\Documents\\TEST\\Amibazzz.json");
         PrintWriter escribir;
         try {
             escribir = new PrintWriter(archivo);
