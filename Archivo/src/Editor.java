@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
@@ -42,29 +43,31 @@ public class Editor extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(255, 255, 255));
 
         txtEntrada.setColumns(20);
         txtEntrada.setRows(5);
         jScrollPane1.setViewportView(txtEntrada);
 
         btnArchivo.setText("Archivo");
-        btnArchivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnArchivoActionPerformed(evt);
+        btnArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnArchivoMouseClicked(evt);
             }
         });
 
         btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
             }
         });
 
         btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseClicked(evt);
             }
         });
 
@@ -106,8 +109,8 @@ public class Editor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArchivoActionPerformed
-        System.out.println("Inico de la carga de archivo");
+    private void btnArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnArchivoMouseClicked
+      System.out.println("Inico de la carga de archivo");
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos de texto", "json");
         fc.setFileFilter(filter);
@@ -129,21 +132,9 @@ public class Editor extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-    }//GEN-LAST:event_btnArchivoActionPerformed
+    }//GEN-LAST:event_btnArchivoMouseClicked
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
- 
-        System.out.println("Inico eliminar archivo");
-        File archivo = new File(this.txtArchivo.getText());
-        if (archivo.delete()) {
-            System.out.println("Archivo borrado: " + archivo.getName());
-        } else {
-            System.out.println("Error al borrar el archivo");
-        }
-
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
         File archivo = new File(this.txtArchivo.getText());
         PrintWriter escribir;
         try {
@@ -154,7 +145,21 @@ public class Editor extends javax.swing.JFrame {
 
             java.util.logging.Logger.getLogger(Editor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+     
+        System.out.println("Inico eliminar archivo");
+        File archivo = new File(this.txtArchivo.getText());
+        if (archivo.delete()) {
+            System.out.println("Archivo borrado: " + archivo.getName());
+            JOptionPane.showMessageDialog(null, "Archivo " + ""+ archivo.getName() + " eliminado");
+        } else {
+            System.out.println("Error al borrar el archivo");
+            JOptionPane.showMessageDialog(null, "Error al eliminar el archivo: " + ""+ archivo.getName());
+        }
+
+    }//GEN-LAST:event_btnEliminarMouseClicked
 
     /**
      * @param args the command line arguments
